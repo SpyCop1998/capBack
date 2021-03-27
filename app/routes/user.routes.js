@@ -1,7 +1,7 @@
 module.exports=(app)=>{
     var user=require('../controllers/user.controller')
 
-    app.get('/jobkro',user.check)//just for checking if server is live
+    app.get('/',user.check)//just for checking if server is live
 
     app.post('/addUser',user.create)//for register users
 
