@@ -17,18 +17,22 @@ var userSchema=mongoose.Schema({
     subProfession:{
         type:String
     },
-    location:{
+    district:{
         type:String,
         required:true
     },
-    lat:{
-        type:Number,
-        required:true
-    },
-    long:{
-        type:Number,
-        required:true
-    },
+    // location:{
+    //     type:String,
+    //     required:true
+    // },
+    // lat:{
+    //     type:Number,
+    //     required:true
+    // },
+    // long:{
+    //     type:Number,
+    //     required:true
+    // },
     isApproved:{
         type:Boolean,
         default:false

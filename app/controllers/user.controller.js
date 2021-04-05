@@ -28,28 +28,28 @@ exports.create=(req,res)=>{//for register the user
         })
     }
 
-    if(!req.body.location){
+    if(!req.body.district){
         return res.status(400).send({
             response_code:801,
             response:"location is missing"
             
         })
     }
-    if(!req.body.lat){
-        return res.status(400).send({
-            response_code:801,
-            response:"lat is missing"
+    // if(!req.body.lat){
+    //     return res.status(400).send({
+    //         response_code:801,
+    //         response:"lat is missing"
             
-        })
-    }
+    //     })
+    // }
 
-    if(!req.body.long){
-        return res.status(400).send({
-            response_code:801,
-            response:"long is missing"
+    // if(!req.body.long){
+    //     return res.status(400).send({
+    //         response_code:801,
+    //         response:"long is missing"
             
-        })
-    }
+    //     })
+    // }
 
     var randV=makeid(6)
 
@@ -58,9 +58,9 @@ exports.create=(req,res)=>{//for register the user
         mobileNumber:req.body.mobileNumber,
         profession:req.body.profession,
         subProfession:req.body.subProfession || null,
-        location:req.body.location,
-        lat:req.body.lat,
-        long:req.body.long,
+        district:req.body.district,
+        // lat:req.body.lat,
+        // long:req.body.long,
         securityNumebr:randV
     })
 
@@ -106,6 +106,22 @@ exports.findAll=(req,res)=>{//for getting user's list
         res.status(400).send({
             response_code:800,
             response:"error occured "+err.message
+        })
+    })
+}
+
+
+exports.findByDistrict=(req,res)=>{
+    User.find({district:req.body.district}).then(user=>{
+        res.send({
+            response_code:200,
+            response:"get the list successfully",
+            data:user
+        })
+    }).catch(err=>{
+        res.send({
+            response_code:800,
+            response:"error while geting list from db"+err.message
         })
     })
 }
