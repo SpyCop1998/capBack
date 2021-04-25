@@ -11,4 +11,6 @@ module.exports=(app)=>{
     app.post('/updateUserStatus',user.updateStatus)//for update the status of user
 
     app.post('/findByDistrict',user.findByDistrict)
+
+    app.post('/searchUser',user.searchUser)//search user by district and profesion
 }

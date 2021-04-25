@@ -126,6 +126,22 @@ exports.findByDistrict=(req,res)=>{
     })
 }
 
+
+exports.searchUser=(req,res)=>{
+    User.find({district:req.body.district,profession:req.body.profession}).then(user=>{
+        res.send({
+            response_code:200,
+            response:"get the list successfully",
+            data:user
+        })
+    }).catch(err=>{
+        res.send({
+            response_code:800,
+            response:"error while geting list from db"+err.message
+        })
+    })
+}
+
 exports.findByStatus=(req,res)=>{//find by status
     // console.log(req.body.isApproved);
     // return;
